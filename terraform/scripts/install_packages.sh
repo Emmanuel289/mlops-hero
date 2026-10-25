@@ -1,8 +1,10 @@
 #!/bin/sh
 
+set -ex
+
 # Install Anaconda
 wget https://repo.anaconda.com/archive/Anaconda3-2026.07-1-Linux-x86_64.sh
-bash Anaconda3-2026.07-1-Linux-x86_64.sh -b -p /opt/anaconda3
+bash Anaconda3-2026.07-1-Linux-x86_64.sh -b -p /home/okech/anaconda3
 rm Anaconda3-2026.07-1-Linux-x86_64.sh
 
 # Update package lists and install basic prerequisites
@@ -26,7 +28,7 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 
 # Setup the docker group and add the user
 groupadd -f docker
-usermod -aG docker "$USER"
+usermod -aG docker okech
 
 # Initialize conda for the user's bash profile
-/opt/anaconda3/bin/conda init
+/home/okech/anaconda3/bin/conda init
