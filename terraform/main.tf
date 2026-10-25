@@ -41,7 +41,8 @@ resource "google_compute_instance" "mlops_vm" {
   boot_disk {
     initialize_params {
       image = "ubuntu-os-pro-cloud/ubuntu-minimal-pro-2404-lts-amd64"
-
+      size  = 30
+      type  = "pd-standard"
       labels = {
         environment = var.env
       }
@@ -57,10 +58,7 @@ resource "google_compute_instance" "mlops_vm" {
     }
   }
 
-
-
-  metadata_startup_script = file("scripts/install_docker.sh")
-
+  metadata_startup_script = file("scripts/install_packages.sh")
   metadata = {
     ssh-keys = "okech:${file("~/.ssh/mlops_vm_key.pub")}"
   }
