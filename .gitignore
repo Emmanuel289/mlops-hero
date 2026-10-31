@@ -223,3 +223,8 @@ __marimo__/
 # Terraform
 .terraform/
 terraform.tfstate*
+
+
+#  database and pickle files
+*.db
+*.pkl
